@@ -70,11 +70,13 @@ let json = `[{
 }]`;
 
 
+
+
+
 document.addEventListener("DOMContentLoaded", function(event){
     let heroes = JSON.parse(json);
     console.log(heroes);
     let cardContent = "";
-    let hero;
     for (hero of heroes) {
         cardContent += `<div class="card">
         <div><img src="${hero.picture}"/></div>
@@ -82,12 +84,38 @@ document.addEventListener("DOMContentLoaded", function(event){
         <div><span>Род деятельности: </span>${hero.activity}</div>
         <div><span>Друзья: </span>${hero.friends}</div>
         <div><span>Суперсила: </span>${hero.force}</div>
-        </div>`;
-    };
+        
+        <select name="score" id="${hero.name}">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        </select>
+        <button onclick='saveScore()'>Поставить оценку</button>
+        </div>
+        `;}
 
+
+        
     document.getElementById("inner-container").innerHTML = cardContent;
+    
+    let select =document.querySelectorAll('select');
+    for(i=0; i<heroes.length; i++){
+        if (localStorage.getItem(heroes[i].name) != null){
+        select[i].value= JSON.parse(localStorage.getItem(heroes[i].name));
+    }}
+
+})
 
 
-});
+function saveScore(){
+    let heroes = JSON.parse(json);
+    let select =document.querySelectorAll('select');
+    for( i=0; i<heroes.length; i++){
+        let selectHero= select[i].value;
+        localStorage.setItem(heroes[i].name, selectHero);
+    }
+}
 
 
