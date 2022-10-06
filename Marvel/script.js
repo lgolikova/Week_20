@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function(event){
         <div><span>Друзья: </span>${hero.friends}</div>
         <div><span>Суперсила: </span>${hero.force}</div>
         
-        <select name="score" id="${hero.name}">
+        <select name="score">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
