@@ -70,9 +70,6 @@ let json = `[{
 }]`;
 
 
-
-
-
 document.addEventListener("DOMContentLoaded", function(event){
     let heroes = JSON.parse(json);
     console.log(heroes);
@@ -96,16 +93,14 @@ document.addEventListener("DOMContentLoaded", function(event){
         </div>
         `;}
 
-
-        
+    
     document.getElementById("inner-container").innerHTML = cardContent;
     
     let select =document.querySelectorAll('select');
     for(i=0; i<heroes.length; i++){
         if (localStorage.getItem(heroes[i].name) != null){
-        select[i].value= JSON.parse(localStorage.getItem(heroes[i].name));
+        select[i].value = JSON.parse(localStorage.getItem(heroes[i].name));
     }}
-
 })
 
 
