@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NASA</title>
+</head>
+
+<body>
+
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        .inner-container {
+            margin: 0 auto;
+        }
+
+        #img {
+            width: 900px;
+        }
+
+        #explanation {
+            width: 900px;
+        }
+
+        p {
+            line-height: 22px;
+        }
+    </style>
+
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="inner-container">
+                <h1 id="title"></h1>
+                <p id="date"></p>
+                <img id="image" alt="photo">
+                <p id="explanation"></p>
+            </div>
+        </div>
+
+        <script>
+            fetch('https://api.nasa.gov/planetary/apod?api_key=hRQ1mQd4VPipRGuaQkRNccmme3wabs4irPSK8v7l')
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    document.getElementById('title').textContent = data.title;
+                    document.getElementById('date').textContent = data.date;
+                    document.getElementById('image').src = data.url;
+                    document.getElementById('explanation').textContent = data.explanation;
+                })
+                .catch(error => console.log(error));
+        </script>
+
+
+    </body>
+
+</html>
